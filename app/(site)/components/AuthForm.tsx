@@ -53,38 +53,39 @@ const AuthForm = () => {
         if (variant === 'REGISTER') {
             axios.post('/api/register', data)
             .then(() => signIn('credentials', {
-              ...data,
-              redirect: false,
+                ...data,
+                redirect: false,
             }))
             .then((callback) => {
-              if (callback?.error) {
-                toast.error('Invalid credentials!');
-              }
+                if (callback?.error) {
+                    toast.error('Invalid credentials!');
+                }
 
-              if (callback?.ok) {
-                router.push('/conversations')
-              }
+                if (callback?.ok) {
+                    toast.success("Register successfully!");
+                    router.push('/conversations')
+                }
             })
             .catch(() => toast.error('Something went wrong!'))
             .finally(() => setIsLoading(false))
-          }
+        }
 
-          if (variant === 'LOGIN') {
+        if (variant === 'LOGIN') {
             signIn('credentials', {
-              ...data,
-              redirect: false
+                ...data,
+                redirect: false
             })
             .then((callback) => {
-              if (callback?.error) {
-                toast.error('Invalid credentials!');
-              }
+                if (callback?.error) {
+                    toast.error('Invalid credentials!');
+                }
 
-              if (callback?.ok) {
-                router.push('/conversations')
-              }
+                if (callback?.ok) {
+                    router.push('/conversations')
+                }
             })
             .finally(() => setIsLoading(false))
-          }
+        }
     };
 
     const socialAction = (action: string) => {

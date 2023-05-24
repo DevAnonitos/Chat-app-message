@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 
 // AddComponents
-// import AuthForm from './components/AuthForm';
+import AuthForm from './components/AuthForm';
 
 const Auth = () => {
   return (
@@ -30,7 +30,7 @@ const Auth = () => {
             Sign in to your account
           </h2>
         </div>
-        {/* <AuthForm /> */}
+        <AuthForm />
       </div>
     </>
   );
