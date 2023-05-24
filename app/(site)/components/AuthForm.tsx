@@ -81,6 +81,7 @@ const AuthForm = () => {
                 }
 
                 if (callback?.ok) {
+                    toast.success("Login is successfully!");
                     router.push('/conversations')
                 }
             })
@@ -90,6 +91,20 @@ const AuthForm = () => {
 
     const socialAction = (action: string) => {
         setIsLoading(true);
+
+        signIn(action, {
+            redirect: false,
+        })
+            .then((callback) => {
+                if(callback?.error) {
+                    toast.error("Invalid credentials!");
+                }
+
+                if(callback?.ok) {
+                    toast.success("Login is successfully!");
+                    router.push("/conversations");
+                }
+            }).finally(() => setIsLoading(false));
     };
 
     return (
@@ -160,11 +175,11 @@ const AuthForm = () => {
                         <div className="mt-6 flex gap-2">
                             <AuthSocialButton
                                 icon={BsGithub}
-                                onClick={() => {}}
+                                onClick={() => socialAction('github')}
                             />
                             <AuthSocialButton
                                 icon={BsGoogle}
-                                onClick={() => {}}
+                                onClick={() => socialAction('google')}
                             />
                         </div>
                     </div>
