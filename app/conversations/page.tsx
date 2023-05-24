@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Conversations = () => {
     return (
@@ -6,4 +6,4 @@ const Conversations = () => {
     );
 };
 
-export default Conversations
+export default Conversations;
