@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
+.form-container {
+  animation-name: form-appear;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+/* Animation */
+@keyframes form-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
