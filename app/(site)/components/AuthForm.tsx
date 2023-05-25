@@ -22,8 +22,12 @@ const AuthForm = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        
-    },[]);
+        if(session?.status === 'authenticated') {
+            router.push('/conversations');
+        } else {
+            setVariant('LOGIN');
+        }
+    },[session?.status, router]);
 
     const toggleVariant = useCallback(() => {
         if(variant === 'LOGIN') {
