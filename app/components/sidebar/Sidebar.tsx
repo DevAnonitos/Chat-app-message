@@ -1,4 +1,5 @@
 import React from "react";
+import DesktopSidebar from "./DesktopSidebar";
 
 async function Sidebar({ children }: {
     children: React.ReactNode,
@@ -7,6 +8,7 @@ async function Sidebar({ children }: {
     return (
         <>
             <div className="h-full bg-primary-700">
+                <DesktopSidebar />
                 <main className="lg:pl-20 h-full">
                     {children}
                 </main>
