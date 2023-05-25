@@ -1,9 +1,15 @@
 import React from 'react';
 
-const layout = () => {
+export default async function UsersLayout({
+    children
+}: {
+    children: React.ReactNode,
+}) {
+
     return (
-        <div>layout</div>
+        <div className='h-full'>
+            {children}
+        </div>
     );
 };
 
-export default layout;
