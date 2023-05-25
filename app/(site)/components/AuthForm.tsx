@@ -16,13 +16,13 @@ type Variant = 'LOGIN' | 'REGISTER';
 
 const AuthForm = () => {
 
-    // const session = useSession();
+    const session = useSession();
     const router = useRouter();
     const [variant, setVariant] = useState<Variant>('LOGIN');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-
+        
     },[]);
 
     const toggleVariant = useCallback(() => {
@@ -62,11 +62,11 @@ const AuthForm = () => {
                 }
 
                 if (callback?.ok) {
-                    toast.success("Register successfully!");
+                    toast.success("Register successfully 😊");
                     router.push('/conversations')
                 }
             })
-            .catch(() => toast.error('Something went wrong!'))
+            .catch(() => toast.error('Something went wrong 😞'))
             .finally(() => setIsLoading(false))
         }
 
@@ -77,11 +77,11 @@ const AuthForm = () => {
             })
             .then((callback) => {
                 if (callback?.error) {
-                    toast.error('Invalid credentials!');
+                    toast.error('Invalid credentials 😞');
                 }
 
                 if (callback?.ok) {
-                    toast.success("Login is successfully!");
+                    toast.success("Login is successfully 😊");
                     router.push('/conversations')
                 }
             })
@@ -97,11 +97,11 @@ const AuthForm = () => {
         })
             .then((callback) => {
                 if(callback?.error) {
-                    toast.error("Invalid credentials!");
+                    toast.error("Invalid credentials 😞");
                 }
 
                 if(callback?.ok) {
-                    toast.success("Login is successfully!");
+                    toast.success("Login is successfully 😊");
                     router.push("/conversations");
                 }
             }).finally(() => setIsLoading(false));

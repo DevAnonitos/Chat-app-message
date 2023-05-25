@@ -16,6 +16,11 @@ body,
   animation-fill-mode: forwards;
 }
 
+.placeholder-padding::placeholder {
+  padding: 10px; /* Adjust the padding value as needed */
+}
+
+
 /* Animation */
 @keyframes form-appear {
   0% {
