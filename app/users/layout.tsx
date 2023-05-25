@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from '../components/sidebar/Sidebar';
 
 export default async function UsersLayout({
     children
@@ -7,9 +8,12 @@ export default async function UsersLayout({
 }) {
 
     return (
-        <div className='h-full'>
-            {children}
-        </div>
+        // @ts-expect-error Server Component
+        <Sidebar>
+            <div className='h-full'>
+                {children}
+            </div>
+        </Sidebar>
     );
 };
 
