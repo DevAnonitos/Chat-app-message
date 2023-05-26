@@ -1,5 +1,6 @@
 import React from "react";
 import DesktopSidebar from "./DesktopSidebar";
+import MobileFooter from "./MobileFooter";
 
 async function Sidebar({ children }: {
     children: React.ReactNode,
@@ -9,6 +10,7 @@ async function Sidebar({ children }: {
         <>
             <div className="h-full bg-primary-700">
                 <DesktopSidebar />
+                <MobileFooter />
                 <main className="lg:pl-20 h-full">
                     {children}
                 </main>
