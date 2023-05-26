@@ -23,7 +23,7 @@ const LoadingModal = () => {
                         leaveTo='opacity-0'
                     >
                         <div
-                            className='fixed inset-0 bg-primary-600
+                            className='fixed inset-0 bg-white   
                             bg-opacity-50 transition-opacity'
                         />
                     </Transition.Child>
