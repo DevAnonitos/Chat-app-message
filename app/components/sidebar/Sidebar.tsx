@@ -7,7 +7,7 @@ async function Sidebar({ children }: {
 
     return (
         <>
-            <div className="h-full">
+            <div className="h-full bg-primary-700">
                 <DesktopSidebar />
                 <main className="lg:pl-20 h-full">
                     {children}
