@@ -1,9 +1,24 @@
-import React from 'react';
+"use-client";
 
-const UserList = () => {
+import React from "react";
+import { User } from "@prisma/client";
+
+interface UserListProps {
+    items: User[];
+}
+
+const UserList: React.FC<UserListProps> = ({
+    items,
+}) => {
     return (
-        <div>UserList</div>
+        <>
+            <aside
+                className=""
+            >
+
+            </aside>
+        </>
     );
-};
+}
 
 export default UserList;
