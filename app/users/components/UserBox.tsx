@@ -9,6 +9,8 @@ import { User } from "@prisma/client";
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/modals/LoadingModal";
 
+import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
+
 interface UserBoxProps {
     data: User;
 }
@@ -32,7 +34,7 @@ const UserBox: React.FC<UserBoxProps> = ({
             <div
                 onClick={() => {}}
                 className="w-full relative flex items-center
-                space-x-3 bg-primary-400 p-3 hover:opacity-95
+                space-x-3 bg-primary-400 p-3 hover:opacity-80
                 rounded-2xl transition cursor-pointer mb-2"
             >
                 <Avatar user={data} />
@@ -46,6 +48,9 @@ const UserBox: React.FC<UserBoxProps> = ({
                             <p className="text-md font-medium text-white">
                                 {data.name}
                             </p>
+                            <BsFillArrowUpRightCircleFill
+                                className="w-6 h-6 text-[#fb8500]"
+                            />
                         </div>
                     </div>
                 </div>
