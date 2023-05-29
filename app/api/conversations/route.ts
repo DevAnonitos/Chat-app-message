@@ -1,5 +1,6 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
+import { pusherServer } from "@/app/libs/pusher";
 
 import prisma from "../../libs/prismadb";
 
@@ -53,12 +54,66 @@ export async function POST (
 
             newConversation.users.forEach((user) => {
                 if (user.email) {
-                    
+                    pusherServer.trigger(
+                        user.email,
+                        'conversation:new',
+                        newConversation,
+                    );
                 }
             });
 
             return NextResponse.json(newConversation);
         }
+
+        const existingConversations = await prisma.conversation.findMany({
+            where: {
+                OR: [
+                    {
+                        userIds: {
+                            equals: [currentUser.id, userId],
+                        }
+                    },
+                    {
+                        userIds: {
+                            equals: [userId, currentUser.id],
+                        }
+                    },
+                ],
+            },
+        });
+
+        const singleConversation = existingConversations[0];
+
+        if(singleConversation) {
+            return NextResponse.json(singleConversation);
+        }
+
+        const newConversation = await prisma.conversation.create({
+            data: {
+                users: {
+                    connect: [
+                        {
+                            id: currentUser.id,
+                        },
+                    ],
+                },
+            },
+            include: {
+                users: true,
+            },
+        });
+
+        newConversation.users.map((user) => {
+            if(user.email) {
+                pusherServer.trigger(
+                    user.email,
+                    'conversation:new',
+                    newConversation
+                );
+            }
+        });
+
+        return NextResponse.json(newConversation);
 
     } catch (error: any) {
         console.log(error);
