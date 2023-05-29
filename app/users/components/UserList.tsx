@@ -3,6 +3,8 @@
 import React from "react";
 import { User } from "@prisma/client";
 import { AiOutlineLink } from "react-icons/ai";
+import Link from "next/link";
+import UserBox from "./UserBox";
 
 interface UserListProps {
     items: User[];
@@ -25,13 +27,23 @@ const UserList: React.FC<UserListProps> = ({
                             text-[#fff8e6] py-4 flex
                             items-center hover:underline cursor-pointer"
                         >
-                            <AiOutlineLink
-                                className="w-6 h-6 mr-1"
-                            />
-                            Users
+                            <Link
+                                href="/users"
+                                className="flex items-center"
+                            >
+                                <AiOutlineLink
+                                    className="w-6 h-6 mr-1"
+                                />
+                                Users
+                            </Link>
                         </div>
                     </div>
-                    {}
+                    {items.map((item) => (
+                        <UserBox
+                            key={item.id}
+                            data={item}
+                        />
+                    ))}
                 </div>
             </aside>
         </>
