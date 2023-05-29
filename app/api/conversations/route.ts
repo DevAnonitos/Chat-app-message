@@ -95,6 +95,9 @@ export async function POST (
                         {
                             id: currentUser.id,
                         },
+                        {
+                            id: userId,
+                        }
                     ],
                 },
             },

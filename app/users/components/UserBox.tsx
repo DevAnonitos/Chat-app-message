@@ -24,7 +24,13 @@ const UserBox: React.FC<UserBoxProps> = ({
 
     const handleClick = useCallback(() => {
         setIsLoading(true);
-    }, []);
+
+        axios.post('/api/conversations', {
+            userId: data.id,
+        }).then((data) => {
+            router.push(`/conversations/${data.data.id}`);
+        }).finally(() => setIsLoading(false));
+    }, [data, router]);
 
     return (
         <>
@@ -32,7 +38,7 @@ const UserBox: React.FC<UserBoxProps> = ({
                 <LoadingModal />
             )}
             <div
-                onClick={() => {}}
+                onClick={handleClick}
                 className="w-full relative flex items-center
                 space-x-3 bg-primary-400 p-3 hover:opacity-80 hover:shadow-lg
                 rounded-2xl transition-all duration-300 ease-in-out
