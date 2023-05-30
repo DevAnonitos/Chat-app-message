@@ -1,6 +1,7 @@
 
 import React from "react";
 import getUsers from "../actions/getUsers";
+import getConversations from "../actions/getConversations";
 import Sidebar from "../components/sidebar/Sidebar";
 import ConservationList from "./components/ConversationList";
 
@@ -10,7 +11,7 @@ export default async function ConversationsLayout({
 }: {
     children: React.ReactNode,
 }) {
-
+    const conversations = await getConversations();
     const users = await getUsers();
 
     return (
