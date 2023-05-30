@@ -91,7 +91,7 @@ const ConservationList: React.FC<ConservationListProps> = ({
             `, isOpen ? 'hidden' : 'block w-full left-0')}
             >
                 <div className='px-5'>
-                    <div className='flex items-center justify-between mb-4 pt-4'>
+                    <div className='flex items-center justify-between mb-4 pt-3'>
                         <div
                                 onClick={() => setIsModalOpen(true)}
                                 className="text-2xl font-bold

@@ -21,7 +21,7 @@ const UserList: React.FC<UserListProps> = ({
                 border-r border-gray-500 block w-full left-0"
             >
                 <div className="px-5">
-                    <div className="flex-col">
+                    <div className="flex-col pt-3">
                         <div
                             className="text-2xl font-bold
                             text-[#fff8e6] py-4 flex
