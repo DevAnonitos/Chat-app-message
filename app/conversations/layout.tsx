@@ -18,7 +18,8 @@ export default async function ConversationsLayout({
         <Sidebar>
             <div className="h-full">
                 <ConservationList
-                    
+                    users={users}
+                    title="Messages"
                 />
                 {children}
             </div>
