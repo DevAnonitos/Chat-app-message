@@ -21,6 +21,7 @@ export default async function ConversationsLayout({
                 <ConservationList
                     users={users}
                     title="Messages"
+                    initialItems={conversations}
                 />
                 {children}
             </div>
