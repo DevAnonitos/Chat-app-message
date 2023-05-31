@@ -15,6 +15,7 @@ import useConversation from '@/app/hooks/useConversation';
 
 import { AiOutlineLink } from "react-icons/ai";
 import Link from "next/link";
+import ConversationBox from './ConversationBox';
 
 interface ConservationListProps {
     initialItems: FullConversationType[],
@@ -118,6 +119,13 @@ const ConservationList: React.FC<ConservationListProps> = ({
                             />
                         </div>
                     </div>
+                    {items.map((item) => (
+                        <ConversationBox
+                            key={item.id}
+                            data={item}
+                            selected={conversationId === item.id}
+                        />
+                    ))}
                 </div>
             </aside>
         </>
