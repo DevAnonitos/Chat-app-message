@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 
 import clsx from "clsx";
 import Avatar from "@/app/components/Avatar";
+import AvatarGroup from "@/app/components/AvatarGroup";
 import { FullConversationType } from "@/app/types";
 
 interface ConversationBoxProps {
