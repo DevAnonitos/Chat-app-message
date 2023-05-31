@@ -39,7 +39,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                     cursor-pointer mb-2
                 `, selected ? 'bg-secondary-300' : 'bg-primary-400')}
             >
-                Conversations
+                {data.isGroup ? (
+                    <AvatarGroup users={data.users} />
+                ): (
+                    <Avatar />
+                )}
             </div>
         </>
     );
