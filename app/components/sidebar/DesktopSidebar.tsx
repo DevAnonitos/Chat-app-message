@@ -6,6 +6,7 @@ import useRoutes from '@/app/hooks/useRoutes';
 import DesktopItem from './DesktopItem';
 
 import Avatar from '../Avatar';
+import SettingsModal from './SettingsModal';
 
 interface DesktopSidebarProps {
     currentUser: User,
@@ -20,6 +21,11 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 
     return (
         <>
+            <SettingsModal
+                currentUser={currentUser}
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+            />
             <div
                 className='hidden lg:fixed lg:inset-y-0
                 lg:left-0 lg:z-40 lg lg:w-20 xl:px-6
