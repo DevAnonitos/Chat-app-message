@@ -34,37 +34,37 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         const messages = data.messages || [];
 
         return messages[messages.length - 1];
-      }, [data.messages]);
+    }, [data.messages]);
 
-      const userEmail = useMemo(() => session.data?.user?.email,
-      [session.data?.user?.email]);
+    const userEmail = useMemo(() => session.data?.user?.email,
+        [session.data?.user?.email]);
 
-      const hasSeen = useMemo(() => {
+    const hasSeen = useMemo(() => {
         if (!lastMessage) {
-          return false;
+            return false;
         }
 
         const seenArray = lastMessage.seen || [];
 
         if (!userEmail) {
-          return false;
+            return false;
         }
 
         return seenArray
-          .filter((user) => user.email === userEmail).length !== 0;
-      }, [userEmail, lastMessage]);
+            .filter((user) => user.email === userEmail).length !== 0;
+    }, [userEmail, lastMessage]);
 
-      const lastMessageText = useMemo(() => {
+    const lastMessageText = useMemo(() => {
         if (lastMessage?.image) {
-          return 'Sent an image';
+            return 'Sent an image';
         }
 
         if (lastMessage?.body) {
-          return lastMessage?.body
+            return lastMessage?.body
         }
 
         return 'Started a conversation';
-      }, [lastMessage]);
+    }, [lastMessage]);
 
     return (
         <>
@@ -89,7 +89,20 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                             <p className="text-md font-medium text-white">
                                 {data.name || otherUser?.name}
                             </p>
+                            {lastMessage?.createdAt && (
+                                <p className="text-xs text-gray-400 font-light">
+                                    {format(new Date(lastMessage.createdAt), 'p')}
+                                </p>
+                            )}
                         </div>
+                        <p
+                            className={clsx(`
+                                truncate
+                                text-sm
+                            `, hasSeen ? 'text-gray-500' : 'text-[#fb8500] font-medium')}
+                        >
+                            {lastMessageText}
+                        </p>
                     </div>
                 </div>
             </div>
