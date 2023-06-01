@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({
                         leaveTo="opacity-0"
                     >
                         <div
-                            className="fixed inset-0 bg-gray-500
+                            className="fixed inset-0 bg-gray-900
                             opacity-80 transition-opacity"
                         />
                     </Transition.Child>
@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
                                     >
                                         <button
                                             type="button"
-                                            className="rounded-md bg-white
+                                            className="rounded-full bg-white
                                             text-gray-400 hover:text-gray-500
                                             focus:outline-none focus:ring-2
                                             focus:ring-indigo-500 focus:ring-offset-2"

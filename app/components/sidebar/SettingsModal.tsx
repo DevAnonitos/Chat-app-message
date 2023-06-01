@@ -22,7 +22,7 @@ interface SettingsModalProps {
 const SettingsModal: React.FC<SettingsModalProps> = ({
     isOpen,
     onClose,
-    currentUser = {},
+    currentUser,
 }) => {
 
     const router = useRouter();
@@ -30,10 +30,48 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
 
     console.log(currentUser, '&TEST_CURRENT_USER');
 
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        formState: {
+            errors,
+        },
+    } = useForm<FieldValues>({
+        defaultValues: {
+            name: currentUser?.name,
+            image: currentUser?.image,
+        },
+    });
+
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
+                <form
+                    onSubmit={() => {}}
+                >
+                    <div className="space-y-12">
+                        <div className="border-b border-gray-900/10 pb-12">
+                            <h2
+                                className="text-2xl font-semibold leading-7
+                                text-white"
+                            >
+                                Profile
+                            </h2>
+                            <p
+                                className="mt-2 text-sm font-medium
+                                leading-6 text-[#fb8500]"
+                            >
+                                Edit your public information.
+                            </p>
 
+                            <div className="mt-10 flex flex-col gap-y-8">
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </Modal>
         </>
     );
