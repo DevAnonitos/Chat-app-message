@@ -59,7 +59,7 @@ const Modal: React.FC<ModalProps> = ({
                             >
                                 <Dialog.Panel
                                     className="relative transform overflow-hidden
-                                    rounded-lg bg-primary-400 px-4 pb-4 pt-5
+                                    rounded-lg bg-primary-500 px-4 pb-4 pt-5
                                     text-left shadow-xl transition-all w-full
                                     sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
                                 >

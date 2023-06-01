@@ -9,6 +9,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "../inputs/Input";
 import Button from "../Button";
 import Image from "next/image";
+import Modal from "../modals/Modal";
 import { CldUploadButton } from "next-cloudinary";
 import { toast } from "react-hot-toast";
 
@@ -31,7 +32,9 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
 
     return (
         <>
-            setting
+            <Modal isOpen={isOpen} onClose={onClose}>
+
+            </Modal>
         </>
     );
 };
