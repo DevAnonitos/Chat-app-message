@@ -7,7 +7,7 @@ interface BodyProps {
 const Body: React.FC<BodyProps> = () => {
     return (
         <>
-            
+            Body
         </>
     );
 };
