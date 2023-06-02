@@ -45,11 +45,24 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
         },
     });
 
+    const image = watch('image');
+    const handleUpload = (result: any) => {
+        setValue('image', result.info.secure_url, {
+            shouldValidate: true,
+        });
+    };
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        setIsLoading(true);
+        // Axios
+
+    };
+
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <form
-                    onSubmit={() => {}}
+                    onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="space-y-12">
                         <div className="border-b border-gray-900/10 pb-12">
@@ -67,9 +80,70 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                             </p>
 
                             <div className="mt-10 flex flex-col gap-y-8">
+                                <Input
+                                    disabled={isLoading}
+                                    label="Name"
+                                    id="name"
+                                    errors={errors}
+                                    required=""
+                                    register={register}
+                                />
+                                <div>
+                                    <label
+                                        htmlFor="photo"
+                                        className="block text-md font-medium
+                                        leading-6 text-[#219ebc]"
+                                    >
+                                        Photo
+                                    </label>
 
+                                    <div className="mt-2 flex items-center gap-x-3">
+                                        <Image
+                                            width="48"
+                                            height="48"
+                                            className="rounded-full cursor-pointer"
+                                            src={
+                                                image || currentUser?.image
+                                                || '/images/placeholder.jpg'
+                                            }
+                                            alt="avt"
+                                        />
+                                        <CldUploadButton
+                                            options={{
+                                                maxFiles: 1,
+                                                maxFileSize: 10000000,
+                                            }}
+                                            onUpload={handleUpload}
+                                            uploadPreset="dfdfeutqe"
+                                        >
+                                            <Button
+                                                disabled={isLoading}
+                                                secondary
+                                                type="button"
+                                            >
+                                                Change
+                                            </Button>
+                                        </CldUploadButton>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-end">
+                        <Button
+                            disabled={isLoading}
+                            secondary
+                            onClick={onClose}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            disabled={isLoading}
+                            type="submit"
+                        >
+                            Save
+                        </Button>
                     </div>
                 </form>
             </Modal>
