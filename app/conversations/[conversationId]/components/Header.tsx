@@ -22,7 +22,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ conversation }) => {
 
     const otherUser = useOtherUser(conversation);
-    const [drawerOpen, setDrawerOpen] = useState();
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
     const { members } = useActiveList();
     const isActive = members.indexOf(otherUser?.email!) !== -1;
@@ -38,7 +38,11 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
 
     return (
         <>
-            {/* <ProfileDrawer /> */}
+            <ProfileDrawer
+                data={conversation}
+                isOpen={drawerOpen}
+                onClose={() => setDrawerOpen(false)}
+            />
             <div
                 className="bg-primary-700 w-full flex
                 border-b-[1px] sm:px-4 py-3 px-4 justify-between
@@ -75,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
                 <HiEllipsisHorizontalCircle
                     size={32}
                     onClick={() => setDrawerOpen(true)}
-                    className="text-white cursor-pointer 
+                    className="text-white cursor-pointer
                     hover:text-gray-300 transition"
                 />
             </div>
