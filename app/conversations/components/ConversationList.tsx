@@ -91,7 +91,7 @@ const ConservationList: React.FC<ConservationListProps> = ({
                 border-r border-gray-500
             `, isOpen ? 'hidden' : 'block w-full left-0')}
             >
-                <div className='px-5'>
+                <div className='px-5 mt-16 lg:mt-0'>
                     <div className='flex items-center justify-between mb-4 pt-4'>
                         <div
                                 onClick={() => setIsModalOpen(true)}

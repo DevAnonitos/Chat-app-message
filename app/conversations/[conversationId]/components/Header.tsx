@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
     const isActive = members.indexOf(otherUser?.email!) !== -1;
 
     const statusText = useMemo(() => {
-        if(conversation && conversation.isGroup) {
+        if(conversation.isGroup) {
             return `${conversation.users.length} members`;
         }
 
@@ -44,7 +44,18 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
                 border-b-[1px] sm:px-4 py-3 px-4 justify-between
                 items-center shadow-sm border-gray-500"
             >
-
+                <div className="flex gap-3 items-center">
+                    <Link
+                        href="/conversations"
+                        className="lg:hidden block text-white
+                        hover:text-gray-300 transition cursor-pointer"
+                    >
+                        <HiChevronLeft  size={32} />
+                    </Link>
+                    {conversation.isGroup ? (
+                        <AvatarGroup />
+                    ) : <Avatar user={otherUser} />}
+                </div>
             </div>
         </>
     );
