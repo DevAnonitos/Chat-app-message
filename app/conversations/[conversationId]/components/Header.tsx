@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
             return `${conversation.users.length} members`;
         }
 
-        return isActive ? "Active" : "Off";
+        return isActive ? "Active" : "Offline";
     }, [conversation, isActive]);
 
 
@@ -44,18 +44,40 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
                 border-b-[1px] sm:px-4 py-3 px-4 justify-between
                 items-center shadow-sm border-gray-500"
             >
-                <div className="flex gap-3 items-center">
+                <div className="flex gap-3 items-center cursor-pointer">
                     <Link
                         href="/conversations"
-                        className="lg:hidden block text-white
+                        className="lg:hidden block text-white border-[1px] rounded-full
                         hover:text-gray-300 transition cursor-pointer"
                     >
                         <HiChevronLeft  size={32} />
                     </Link>
-                    {conversation.isGroup ? (
-                        <AvatarGroup />
-                    ) : <Avatar user={otherUser} />}
+                    {conversation.isGroup
+                        ? (
+                            <AvatarGroup
+                                users={conversation.users}
+                            />
+                        ) : (
+                            <Avatar
+                                user={otherUser}
+                            />
+                        )
+                    }
+                    <div className="flex flex-col">
+                        <div className="flex items-center text-white">
+                            {conversation.name || otherUser.name}
+                        </div>
+                        <div className="text-sm font-medium text-[#fb8500]">
+                            {statusText}
+                        </div>
+                    </div>
                 </div>
+                <HiEllipsisHorizontalCircle
+                    size={32}
+                    onClick={() => setDrawerOpen(true)}
+                    className="text-white cursor-pointer 
+                    hover:text-gray-300 transition"
+                />
             </div>
         </>
     );
