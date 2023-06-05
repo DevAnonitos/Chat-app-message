@@ -75,7 +75,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                     space-x-3 bg-primary-400 p-3 hover:opacity-80 hover:shadow-lg
                     rounded-2xl transition-all duration-300 ease-in-out
                     cursor-pointer mb-2
-                `, selected ? 'bg-secondary-300' : 'bg-primary-400')}
+                `, selected ? 'brightness-100 border-2' : 'bg-primary-400')}
             >
                 {data.isGroup ? (
                     <AvatarGroup users={data.users} />
