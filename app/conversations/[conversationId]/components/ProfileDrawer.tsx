@@ -208,7 +208,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                     <hr />
                                                                     <div>
                                                                         <dt
-                                                                            className="text-sm font-medium
+                                                                            className="text-md font-medium
                                                                             text-gray-500 sm:w-40
                                                                             sm:flex-shrink-0"
                                                                         >
