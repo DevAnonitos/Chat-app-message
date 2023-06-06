@@ -6,9 +6,9 @@ interface MessageBoxProps {
 
 const MessageBox: React.FC<MessageBoxProps> = () => {
     return (
-        <>
-            
-        </>
+        <div>
+            MessageBox
+        </div>
     );
 }
 
