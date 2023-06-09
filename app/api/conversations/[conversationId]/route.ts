@@ -55,4 +55,4 @@ export async function DELETE (
         console.log(error);
         return NextResponse.json(null);
     }
-}
+};
