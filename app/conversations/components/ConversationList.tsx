@@ -16,6 +16,7 @@ import useConversation from '@/app/hooks/useConversation';
 import { AiOutlineLink } from "react-icons/ai";
 import Link from "next/link";
 import ConversationBox from './ConversationBox';
+import GroupChatModal from '@/app/components/modals/GroupChatModal';
 
 interface ConservationListProps {
     initialItems: FullConversationType[],
@@ -85,6 +86,11 @@ const ConservationList: React.FC<ConservationListProps> = ({
 
     return (
         <>
+            <GroupChatModal
+                users={users}
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
             <aside className={clsx(`
                 fixed inset-y-0 pb-20 lg:pb-0 lg:left-20
                 lg:w-80 lg:block overflow-y-auto
