@@ -24,15 +24,49 @@ const Body: React.FC<BodyProps> = (
 
     const { conversationId } = useConversation();
 
-    // const updateMessageHandler = (newMessage: FullMessageType) => {
-    //     setMessages((current) => current.map((currentMessage) => {
-    //         if(currentMessage.id === newMessage.id) {
-    //             return newMessage;
-    //         }
+    useEffect(() => {
+        axios.post(`/api/conversation/${conversationId}/seen`);
+    },[conversationId]);
 
-    //         return currentMessage;
-    //     }));
-    // };
+    useEffect(() => {
+
+        pusherClient.subscribe(conversationId);
+        bottomRef?.current?.scrollIntoView();
+
+        const messageHandler = (message: FullMessageType) => {
+            axios.post(`/api/conversation/${conversationId}/seen`);
+
+            setMessages((current) => {
+                if(find(current, { id: message.id })) {
+                    return current;
+                }
+
+                return [...current, message];
+            });
+
+            bottomRef?.current?.scrollIntoView();
+        };
+
+        const updateMessageHandler = (newMessage: FullMessageType) => {
+            setMessages((current) => current.map((currentMessage) => {
+                if(currentMessage.id === newMessage.id) {
+                    return newMessage;
+                }
+
+                return currentMessage;
+            }));
+        };
+
+        pusherClient.bind('messages:new', messageHandler);
+        pusherClient.bind('messages:update', updateMessageHandler);
+
+        return () => {
+            pusherClient.unsubscribe(conversationId);
+            pusherClient.unbind('messages:new', messageHandler);
+            pusherClient.unbind('messages:update', updateMessageHandler);
+        };
+
+    },[conversationId]);
 
     return (
         <>
@@ -44,6 +78,10 @@ const Body: React.FC<BodyProps> = (
                         data={message}
                     />
                 ))}
+                <div
+                    className="pt-24"
+                    ref={bottomRef}
+                />
             </div>
         </>
     );
