@@ -28,11 +28,18 @@ const Form = () => {
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-
+        setValue('message', '', { shouldValidate: true });
+        axios.post(`/api/message`, {
+            ...data,
+            conversationId: conversationId,
+        });
     };
 
     const handleUpload = (result: any) => {
-
+        axios.post(`/api/messages`, {
+            image: result.info.secure_url,
+            conversationId: conversationId,
+        });
     };
 
     return (
@@ -47,6 +54,8 @@ const Form = () => {
                         maxFiles: 1,
                         maxFileSize: 10000000,
                     }}
+                    onUpload={handleUpload}
+                    uploadPreset="pgc9ehd5"
                 >
                     <HiPhoto
                         size={30}
