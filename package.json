@@ -21,7 +21,7 @@
     "clsx": "^1.2.1",
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",
-    "next": "13.5.4",
+    "next": "14.1.1",
     "next-auth": "^4.24.5",
     "next-cloudinary": "^4.11.0",
     "next-superjson-plugin": "^0.5.8",
